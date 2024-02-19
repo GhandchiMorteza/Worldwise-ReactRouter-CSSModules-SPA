@@ -10,6 +10,9 @@ import Pricing from './routes/Pricing';
 import AppLayout from './routes/AppLayout';
 import Login from './routes/Login';
 import CityList from './components/CityList';
+import CountryList from './components/CountriesList';
+import City from './components/City';
+import Form from './components/Form';
 
 const router = createBrowserRouter([
   {
@@ -42,12 +45,16 @@ const router = createBrowserRouter([
             element: <CityList />,
           },
           {
+            path: 'cities/:id',
+            element: <City />,
+          },
+          {
             path: 'countries',
-            element: <p>slam con</p>,
+            element: <CountryList />,
           },
           {
             path: 'form',
-            element: <p>slam form</p>,
+            element: <Form />,
           },
         ],
       },

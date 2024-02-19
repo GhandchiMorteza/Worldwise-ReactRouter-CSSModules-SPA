@@ -11,9 +11,15 @@ interface City {
   id: number;
 }
 
+interface Country {
+  emoji: string;
+  country: string;
+  id: number;
+}
+
 interface CitiesContextType {
   cities: City[];
   isLoading: boolean;
 }
 
-export type { City, CitiesContextType };
+export type { City, CitiesContextType, Country };
