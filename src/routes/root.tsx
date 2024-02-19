@@ -1,12 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import PageNav from '../components/PageNav';
+import { CitiesProvider } from '../contexts/CitiesContext';
 
 function Root() {
   return (
-    <>
-      <PageNav />
+    <CitiesProvider>
       <Outlet />
-    </>
+    </CitiesProvider>
   );
 }
 

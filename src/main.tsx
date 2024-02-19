@@ -7,6 +7,9 @@ import ErrorPage from './error-page';
 import Homepage from './routes/Homepage';
 import Product from './routes/Product';
 import Pricing from './routes/Pricing';
+import AppLayout from './routes/AppLayout';
+import Login from './routes/Login';
+import CityList from './components/CityList';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,32 @@ const router = createBrowserRouter([
       {
         path: 'pricing',
         element: <Pricing />,
+      },
+      {
+        path: 'app',
+        element: <AppLayout />,
+        children: [
+          {
+            index: true,
+            element: <CityList />,
+          },
+          {
+            path: 'cities',
+            element: <CityList />,
+          },
+          {
+            path: 'countries',
+            element: <p>slam con</p>,
+          },
+          {
+            path: 'form',
+            element: <p>slam form</p>,
+          },
+        ],
+      },
+      {
+        path: 'login',
+        element: <Login />,
       },
     ],
   },
