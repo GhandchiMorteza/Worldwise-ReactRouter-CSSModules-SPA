@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { City } from '../types';
+import { CityType } from '../types';
 import styles from './CityItem.module.css';
+import { useCities } from '../contexts/useCities';
 
 interface Props {
-  city: City;
+  city: CityType;
 }
 
 const formatDate = (date: string) =>
@@ -15,16 +16,28 @@ const formatDate = (date: string) =>
   }).format(new Date(date));
 
 function CityItem({ city }: Props) {
+  const { currentCity, deleteCity } = useCities();
+
+  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    if (city.id) {
+      void deleteCity(city.id);
+    }
+  }
   return (
     <li>
       <Link
-        className={styles.cityItem}
+        className={`${styles.cityItem} ${
+          city.id === currentCity?.id ? styles['cityItem--active'] : ''
+        }`}
         to={`${city.id}?lat=${city.position.lat}&lng=${city.position.lng}`}
       >
         <span className={styles.emoji}>{city.emoji}</span>
         <h3 className={styles.name}>{city.cityName}</h3>
         <time className={styles.date}>({formatDate(city.date)})</time>
-        <button className={styles.deleteBtn}>&times;</button>
+        <button className={styles.deleteBtn} onClick={handleClick}>
+          &times;
+        </button>
       </Link>
     </li>
   );

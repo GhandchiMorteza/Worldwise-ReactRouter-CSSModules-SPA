@@ -37,10 +37,6 @@ const router = createBrowserRouter([
         element: <AppLayout />,
         children: [
           {
-            index: true,
-            element: <CityList />,
-          },
-          {
             path: 'cities',
             element: <CityList />,
           },

@@ -11,7 +11,6 @@ function Sidebar() {
 
       <Outlet />
 
-      <p>List of cities</p>
       <footer className={styles.footer}>
         <p>&copy; Copyright {new Date().getFullYear()} by Wordwise Inc.</p>
       </footer>
