@@ -26,6 +26,13 @@ interface CitiesContextType {
   deleteCity: (id: string) => Promise<void>;
 }
 
+interface AuthContextType {
+  user: null | User;
+  isAuthenticated: boolean;
+  login: (email: string, password: string) => void;
+  logout: () => void;
+}
+
 interface GeolocationResponse {
   latitude: number;
   lookupSource: string;
@@ -71,4 +78,18 @@ interface GeolocationResponse {
   };
 }
 
-export type { CityType, CitiesContextType, Country, GeolocationResponse };
+interface User {
+  name: string;
+  email: string;
+  password: string;
+  avatar: string;
+}
+
+export type {
+  CityType,
+  CitiesContextType,
+  Country,
+  GeolocationResponse,
+  User,
+  AuthContextType,
+};
